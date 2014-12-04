@@ -13,6 +13,8 @@
 
     <string name="btnLogout">Logout</string>
     <string name="btnLogin">Login</string>
+    <string name="hEmail">Email</string>
+    <string name="hPassword">Password</string>
 
 
     <!--  Debug   -->
@@ -24,5 +26,6 @@
     <string name="debugtxtmedium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer suscipit.</string>
     <string name="debugtxtlarge">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elit mauris, efficitur vitae ligula sed, facilisis efficitur turpis. Morbi libero elit, aliquet nec leo non.</string>
     <string name="debugtxtxlarge">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin convallis urna et dolor volutpat maximus. Suspendisse facilisis diam lobortis tortor pharetra, ut condimentum eros feugiat. Suspendisse mollis iaculis sapien. Sed quis odio in enim lobortis hendrerit. Nunc vel est tempus, cursus purus fringilla, semper felis. Sed facilisis arcu ut ligula.</string>
+    <string name="menu">Menu</string>
 
 </resources>

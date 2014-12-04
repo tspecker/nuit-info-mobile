@@ -8,11 +8,11 @@
         android:id="@+id/lsvMenu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/btnLogin"
+        android:layout_above="@+id/btnLoginMenu"
         android:layout_alignParentTop="true"></ListView>
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnLoginMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
