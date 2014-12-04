@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- *************** -->
+    <!-- resources color -->
+    <!-- *************** -->
+
+    <!-- Primary/additional colors -->
+    <color name="red">#FF0000</color>
+    <color name="green">#00FF00</color>
+    <color name="blue">#0000FF</color>
+    <color name="dark">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="brown">#582900</color>
+    <color name="yellow">#FFFF00</color>
+    <color name="grey">#DCDCDC</color>
+    <color name="light_grey">#CCCCCC</color>
+    <color name="orange">#ED7F10</color>
+    <color name="pink">#FD6C9E</color>
+    <color name="purple">#660099</color>
+
+    <!-- AppColors -->
+
+
+</resources>
