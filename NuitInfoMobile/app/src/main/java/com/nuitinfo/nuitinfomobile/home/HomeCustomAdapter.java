@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import com.android.volley.toolbox.ImageLoader;
+import com.nuitinfo.model.News;
 import com.nuitinfo.nuitinfomobile.R;
 
 import java.util.ArrayList;
@@ -19,34 +20,38 @@ public class HomeCustomAdapter extends BaseAdapter {
 
     private final Context mContext;
     private final ImageLoader mImgLoader;
-    private ArrayList<User> mUser;
+    private ArrayList<News.Article> mArticles;
 
-    public HomeCustomAdapter(Context mContext, ImageLoader mImgLoader, ArrayList<User> user) {
+    public HomeCustomAdapter(Context mContext, ImageLoader mImgLoader, ArrayList<News.Article> articles) {
         this.mContext = mContext;
         this.mImgLoader = mImgLoader;
-        this.mUser = user;
+        this.mArticles = articles;
     }
 
 
     @Override
     public int getCount() {
-        return (mUser == null || mUser.size() <= 0) ? 0 : mUser.size();
+        return (mArticles == null || mArticles.size() <= 0) ? 0 : mArticles.size();
     }
 
     @Override
-    public Object getItem(int position) {
-        return null;
+    public News.Article getItem(int position) {
+        News.Article item = null;
+        if (mArticles != null && mArticles.size() > 0) {
+            item = mArticles.get(position);
+        }
+        return item;
     }
 
     @Override
     public long getItemId(int position) {
-        return (long) mUser.get(position).id;
+        return (long) mArticles.get(position).id;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        User item = mUser.get(position);
+        News.Article item = mArticles.get(position);
 
         View v = convertView;
         ViewHolder vh = null;
@@ -77,7 +82,7 @@ public class HomeCustomAdapter extends BaseAdapter {
         // TODO
     }
 
-    private void setupView(ViewHolder vh, User item) {
+    private void setupView(ViewHolder vh, News.Article item) {
         // TODO
     }
 

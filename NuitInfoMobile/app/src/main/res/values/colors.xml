@@ -10,7 +10,7 @@
     <color name="green">#00FF00</color>
     <color name="blue">#0000FF</color>
     <color name="dark">#000000</color>
-    <color name="white">#ffffff</color>
+    <color name="white">#FFFFFF</color>
     <color name="brown">#582900</color>
     <color name="yellow">#FFFF00</color>
     <color name="grey">#DCDCDC</color>
@@ -20,6 +20,11 @@
     <color name="purple">#660099</color>
 
     <!-- AppColors -->
+    <color name="app_dark">#000000</color>
+    <color name="app_dark_grey">#293841</color>
+    <color name="app_medium_grey">#7E868E</color>
+    <color name="app_light_grey">#BDC1C0</color>
+    <color name="app_white">#FFFFFF</color>
 
 
 </resources>
