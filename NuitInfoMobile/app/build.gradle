@@ -19,7 +19,17 @@ android {
     }
 }
 
+// http://developer.android.com/sdk/installing/studio-build.html#configBuild
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Module dependency
+    // sample : compile project(":library_Android-Validator")
+
+    // Remote binary dependency
     compile 'com.android.support:support-v4:21.0.0'
+    compile 'com.google.code.gson:gson:2.2.4'
+
+
+    // Local binary dependency
+    compile fileTree(dir: 'libs', include: ['*.jar'])
 }
