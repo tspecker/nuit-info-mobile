@@ -8,6 +8,8 @@ import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
+import com.nuitinfo.AppController;
+import com.nuitinfo.model.MyError;
 import com.nuitinfo.model.ParamRequests;
 
 import java.util.ArrayList;
@@ -20,8 +22,8 @@ import java.util.Map;
  */
 public class VolleyUtility {
 
-    public Error Post_Request(String url ,final ParamRequests paramObj) {
-        Error result = null;
+    public Error Post_Request(String url ,final ParamRequests paramObj final Object responseObj) {
+
         String language = Locale.getDefault().getLanguage();
         String tag_json_obj = "json_obj_req";
         final String TAG = "Volley";
@@ -32,12 +34,15 @@ public class VolleyUtility {
                     @Override
                     public void onResponse(String response) {
 
+                         MyError result = new MyError(response,false);
+                        responseObj. result ;
+
                     }
                 }, new Response.ErrorListener() {
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                VolleyLog.d(TAG, "Error: " + error.getMessage());
+                VolleyLog.d(TAG, "MyError: " + error.getMessage());
                 NetworkResponse responseNetwork = error.networkResponse;
                 if (responseNetwork != null) {
 
@@ -64,7 +69,5 @@ public class VolleyUtility {
         RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, 1, 1);
         jsonObjReq.setRetryPolicy(policy);
         AppController.getInstance().addToRequestQueue(jsonObjReq, tag_json_obj);
-
-        return result;
     }
 }

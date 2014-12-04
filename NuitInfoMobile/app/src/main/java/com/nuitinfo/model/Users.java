@@ -21,8 +21,8 @@ public class Users {
 
         }
 
-        public Error Login(String pseudo , String password){
-            Error result = null ;
+        public MyError Login(String pseudo , String password){
+            MyError result = null ;
 
             /*
              TODO :Coder la fonction
