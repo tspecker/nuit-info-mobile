@@ -3,7 +3,7 @@ package com.nuitinfo.model.interfaces;
 import com.nuitinfo.model.Base;
 
 /**
- * Created by tiby on 05/12/2014.
+ * Created by tspecker on 05/12/2014.
  */
 public interface IBaseCallback {
 

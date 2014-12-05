@@ -1,9 +1,13 @@
 package com.nuitinfo.model;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import com.nuitinfo.Util.VolleyUtility;
 import com.nuitinfo.model.interfaces.IBaseCallback;
 import com.nuitinfo.model.interfaces.IUser;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import static com.nuitinfo.Util.Constants.GLOBAL_URL;
@@ -20,25 +24,56 @@ public class Users {
         private static final String LOGIN = "/auth/signin";
         private static final String LOGOUT = "/auth/signup";
 
-        public int id;
+        public String _id;
+        public String email;
+        public String created;
+        public String country;
+        public String state;
+        public String city;
+        public String zipcode;
+        public String street;
+        public String birthdate;
+        public String description;
+        public String picture;
+        public String lastname;
+        public String firstname;
+        public String[] roles;
 
         public static void connexion(String email, String pwd, final IUser callback) {
             String url = GLOBAL_URL + LOGIN;
 
             ParamRequests paramsObj = new ParamRequests();
             paramsObj.list.add(new ParamRequests.ParamRequest("email", email));
-            paramsObj.list.add(new ParamRequests.ParamRequest("pwd", pwd));
+            paramsObj.list.add(new ParamRequests.ParamRequest("password", pwd));
 
-            VolleyUtility.makeGetRequest(url, paramsObj, new IBaseCallback() {
+            VolleyUtility.makePostRequest(url, paramsObj, new IBaseCallback() {
 
                 @Override
                 public void responseError(Base result) {
-                    callback.userResponseError(result);
+
+                    // Parse response into my object
+                    Type collectionType = new TypeToken<User>() {
+                    }.getType();
+                    // return deserializer object
+                    User tmp = new User();
+                    Gson gson = new GsonBuilder().create();
+                    tmp = gson.fromJson(result.message, collectionType);
+
+                    callback.userResponseError(tmp);
                 }
 
                 @Override
                 public void response(Base result) {
-                    callback.userResponse(result);
+
+                    // Parse response into my object
+                    Type collectionType = new TypeToken<User>() {
+                    }.getType();
+                    // return deserializer object
+                    User tmp = new User();
+                    Gson gson = new GsonBuilder().create();
+                    tmp = gson.fromJson(result.message, collectionType);
+
+                    callback.userResponse(tmp);
                 }
             });
         }
@@ -49,16 +84,34 @@ public class Users {
             ParamRequests paramsObj = new ParamRequests();
             paramsObj.list.add(new ParamRequests.ParamRequest("id", String.valueOf(id)));
 
-            VolleyUtility.makeGetRequest(url, paramsObj, new IBaseCallback() {
+            VolleyUtility.makePostRequest(url, paramsObj, new IBaseCallback() {
 
                 @Override
                 public void responseError(Base result) {
-                    callback.userResponseError(result);
+
+                    // Parse response into my object
+                    Type collectionType = new TypeToken<User>() {
+                    }.getType();
+                    // return deserializer object
+                    User tmp = new User();
+                    Gson gson = new GsonBuilder().create();
+                    tmp = gson.fromJson(result.message, collectionType);
+
+                    callback.userResponseError(tmp);
                 }
 
                 @Override
                 public void response(Base result) {
-                    callback.userResponse(result);
+
+                    // Parse response into my object
+                    Type collectionType = new TypeToken<User>() {
+                    }.getType();
+                    // return deserializer object
+                    User tmp = new User();
+                    Gson gson = new GsonBuilder().create();
+                    tmp = gson.fromJson(result.message, collectionType);
+
+                    callback.userResponse(tmp);
                 }
             });
         }

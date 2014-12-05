@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class ParamRequests {
 
-    public ArrayList<ParamRequest> list;
+    public ArrayList<ParamRequest> list = new ArrayList<ParamRequest>();
 
     public static class ParamRequest {
         public String Key;

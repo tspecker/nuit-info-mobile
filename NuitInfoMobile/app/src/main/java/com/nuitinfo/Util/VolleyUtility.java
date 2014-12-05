@@ -36,7 +36,6 @@ public class VolleyUtility {
 
                         Base result = new Base(response, true);
                         callback.response(result);
-                        return;
                     }
                 }, new Response.ErrorListener() {
 
@@ -47,8 +46,6 @@ public class VolleyUtility {
 
                 Base result = new Base(error.getMessage(), false);
                 callback.responseError(result);
-                return;
-
                 // TODO
                 /*if (responseNetwork != null) {
 
@@ -87,7 +84,6 @@ public class VolleyUtility {
 
                         Base result = new Base(response, true);
                         callback.response(result);
-                        return;
                     }
                 }, new Response.ErrorListener() {
 
@@ -98,7 +94,6 @@ public class VolleyUtility {
 
                 Base result = new Base(error.getMessage(), false);
                 callback.responseError(result);
-                return;
 
                 // TODO
                 /*if (responseNetwork != null) {

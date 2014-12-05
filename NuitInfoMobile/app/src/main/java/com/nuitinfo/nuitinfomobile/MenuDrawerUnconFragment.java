@@ -39,15 +39,15 @@ public class MenuDrawerUnconFragment extends Fragment {
             }
         });
 
-        menuitem.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                selectItem(position);
-            }
-        });
+//        menuitem.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                selectItem(position);
+//            }
+//        });
 
-        menuitem.setAdapter(new MenuCustomAdapter(getActivity().getApplicationContext(),
-                new MenuI));
+//        menuitem.setAdapter(new MenuCustomAdapter(getActivity().getApplicationContext(),
+//                new MenuI));
 
 
         return rootView;
