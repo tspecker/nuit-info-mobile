@@ -38,7 +38,7 @@ public class News {
         paramsObj.list.add(new ParamRequests.ParamRequest("pwd", pwd));
 
         // TODO change method
-        VolleyUtility.connexion(url, paramsObj, new IBaseCallback() {
+        VolleyUtility.makeGetRequest(url, paramsObj, new IBaseCallback() {
 
             @Override
             public void responseError(Base result) {

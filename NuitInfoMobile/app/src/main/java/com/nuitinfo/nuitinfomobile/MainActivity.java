@@ -37,8 +37,8 @@ public class MainActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
-        String email = "specker.thibaut@gmail.com";
-        String pwd = "motdepassealazeub";
+        String email = "admin@test.fr";
+        String pwd = "superadmin";
         Users.User.connexion(email, pwd, this);
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
