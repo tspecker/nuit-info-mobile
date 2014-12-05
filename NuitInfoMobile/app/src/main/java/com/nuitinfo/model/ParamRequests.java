@@ -7,15 +7,15 @@ import java.util.ArrayList;
  */
 public class ParamRequests {
 
-    public ArrayList<ParamRequest> list  ;
+    public ArrayList<ParamRequest> list;
 
-    public class ParamRequest{
-        public String Key ;
+    public static class ParamRequest {
+        public String Key;
         public String Value;
 
-        public ParamRequest(String _key , String _value){
-            this.Key = _key ;
-            this.Value = _value ;
+        public ParamRequest(String _key, String _value) {
+            this.Key = _key;
+            this.Value = _value;
         }
     }
 }

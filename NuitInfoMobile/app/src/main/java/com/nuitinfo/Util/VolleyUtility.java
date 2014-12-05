@@ -9,9 +9,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.nuitinfo.AppController;
-import com.nuitinfo.model.MyError;
+import com.nuitinfo.model.Base;
 import com.nuitinfo.model.ParamRequests;
-import com.nuitinfo.model.interfaces.IMyError;
+import com.nuitinfo.model.interfaces.IBaseCallback;
 
 import java.util.HashMap;
 import java.util.Locale;
@@ -23,7 +23,7 @@ import java.util.Map;
 public class VolleyUtility {
 
 
-    public static void connexion(String url, final ParamRequests paramObj, final IMyError callback) {
+    public static void makePostRequest(String url, final ParamRequests paramObj, final IBaseCallback callback) {
         String language = Locale.getDefault().getLanguage();
         String tag_json_obj = "json_obj_req";
         final String TAG = "Volley";
@@ -34,7 +34,7 @@ public class VolleyUtility {
                     @Override
                     public void onResponse(String response) {
 
-                        MyError result = new MyError(response, true);
+                        Base result = new Base(response, true);
                         callback.response(result);
                         return;
                     }
@@ -45,8 +45,7 @@ public class VolleyUtility {
                 VolleyLog.d(TAG, "MyError: " + error.getMessage());
                 NetworkResponse responseNetwork = error.networkResponse;
 
-
-                MyError result = new MyError(error.getMessage(), false);
+                Base result = new Base(error.getMessage(), false);
                 callback.responseError(result);
                 return;
 
@@ -55,10 +54,8 @@ public class VolleyUtility {
 
 
                 }*/
-
             }
         }) {
-
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
@@ -68,7 +65,6 @@ public class VolleyUtility {
                 }
                 return params;
             }
-
         };
 
         // Adding request to request queue
@@ -78,5 +74,54 @@ public class VolleyUtility {
         AppController.getInstance().addToRequestQueue(jsonObjReq, tag_json_obj);
     }
 
+    public static void makeGetRequest(String url, final ParamRequests paramObj, final IBaseCallback callback) {
+        String language = Locale.getDefault().getLanguage();
+        String tag_json_obj = "json_obj_req";
+        final String TAG = "Volley";
+        StringRequest jsonObjReq = new StringRequest(Method.GET,
+                url,
+                new Response.Listener<String>() {
 
+                    @Override
+                    public void onResponse(String response) {
+
+                        Base result = new Base(response, true);
+                        callback.response(result);
+                        return;
+                    }
+                }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.d(TAG, "MyError: " + error.getMessage());
+                NetworkResponse responseNetwork = error.networkResponse;
+
+                Base result = new Base(error.getMessage(), false);
+                callback.responseError(result);
+                return;
+
+                // TODO
+                /*if (responseNetwork != null) {
+
+
+                }*/
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+
+                for (ParamRequests.ParamRequest param : paramObj.list) {
+                    params.put(param.Key, param.Value);
+                }
+                return params;
+            }
+        };
+
+        // Adding request to request queue
+        int socketTimeout = 50000;//30 seconds - change to what you want
+        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, 1, 1);
+        jsonObjReq.setRetryPolicy(policy);
+        AppController.getInstance().addToRequestQueue(jsonObjReq, tag_json_obj);
+    }
 }

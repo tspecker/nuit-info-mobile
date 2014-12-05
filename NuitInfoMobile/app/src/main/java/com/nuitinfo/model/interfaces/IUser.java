@@ -1,12 +1,12 @@
 package com.nuitinfo.model.interfaces;
 
-import com.nuitinfo.model.MyError;
+import com.nuitinfo.model.Base;
 
 /**
  * Created by tspecker on 05/12/14.
  */
 public interface IUser {
-    void userResponseError(MyError result);
+    void userResponseError(Base result);
 
-    void userResponse(MyError result);
+    void userResponse(Base result);
 }

@@ -9,7 +9,7 @@ public class Menu {
 
     public ArrayList<CustomMenuItem> items;
 
-    public class CustomMenuItem {
+    public static class CustomMenuItem {
 
         public String label;
 

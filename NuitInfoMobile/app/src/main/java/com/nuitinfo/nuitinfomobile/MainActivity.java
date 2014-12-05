@@ -12,7 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.nuitinfo.model.MyError;
+import com.nuitinfo.model.Base;
 import com.nuitinfo.model.Users;
 import com.nuitinfo.model.interfaces.IUser;
 
@@ -37,7 +37,7 @@ public class MainActivity extends Activity
 
         String email = "specker.thibaut@gmail.com";
         String pwd = "motdepassealazeub";
-        //Users.User.connexion(email, pwd, this);
+        Users.User.connexion(email, pwd, this);
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getFragmentManager().findFragmentById(R.id.navigation_drawer);
@@ -57,7 +57,7 @@ public class MainActivity extends Activity
                 .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
                 .commit();
 
-        switch (position){
+        switch (position) {
 
         }
     }
@@ -152,12 +152,12 @@ public class MainActivity extends Activity
     }
 
     @Override
-    public void userResponse(MyError result) {
+    public void userResponse(Base result) {
 
     }
 
     @Override
-    public void userResponseError(MyError result) {
+    public void userResponseError(Base result) {
 
     }
 

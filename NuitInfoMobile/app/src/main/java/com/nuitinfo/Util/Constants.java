@@ -5,6 +5,6 @@ package com.nuitinfo.Util;
  */
 public class Constants {
 
-    public final static String GLOBAL_URL =" " ;
+    public final static String GLOBAL_URL = "http://sonarsg.dynamic-dns.net";
 
 }
