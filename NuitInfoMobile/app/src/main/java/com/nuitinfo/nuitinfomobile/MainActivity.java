@@ -2,31 +2,24 @@ package com.nuitinfo.nuitinfomobile;
 
 import android.app.ActionBar;
 import android.app.Activity;
-import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 
-import com.nuitinfo.model.MyError;
+import com.nuitinfo.model.Base;
 import com.nuitinfo.model.Users;
 import com.nuitinfo.model.interfaces.IUser;
 
 import static com.nuitinfo.Util.Constants.NEWS;
-import static com.nuitinfo.Util.Constants.PLACES;
-
-import com.nuitinfo.Util.Constants;
 
 
 public class MainActivity extends Activity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks, IUser {
 
 
-    MenuDrawerConFragment menuLogin ;
+    MenuDrawerConFragment menuLogin;
     MenuDrawerUnconFragment menuUnLogin;
 
     /**
@@ -46,7 +39,7 @@ public class MainActivity extends Activity
 
         String email = "specker.thibaut@gmail.com";
         String pwd = "motdepassealazeub";
-        //Users.User.connexion(email, pwd, this);
+        Users.User.connexion(email, pwd, this);
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getFragmentManager().findFragmentById(R.id.navigation_drawer);
@@ -121,22 +114,10 @@ public class MainActivity extends Activity
         return super.onOptionsItemSelected(item);
     }
 
-
-
-    @Override
-    public void userResponse(MyError result) {
-
-    }
-
-    @Override
-    public void userResponseError(MyError result) {
-
-    }
-
-    public void CreateMenu(){
+    public void CreateMenu() {
 
         // TODO  create method to know if user is connect or no
-        boolean connected = false ;
+        boolean connected = false;
 
         menuLogin = new MenuDrawerConFragment();
         menuUnLogin = new MenuDrawerUnconFragment();
@@ -145,11 +126,20 @@ public class MainActivity extends Activity
         if (connected) {
 
 
-        }else{
+        } else {
 
 
         }
 
     }
 
+    @Override
+    public void userResponseError(Base result) {
+
+    }
+
+    @Override
+    public void userResponse(Base result) {
+
+    }
 }
