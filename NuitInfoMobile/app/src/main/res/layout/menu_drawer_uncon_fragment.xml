@@ -3,44 +3,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:id="@+id/UserInfos"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true">
-
-        <TextView
-            android:id="@+id/tvName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/mdUserName" />
-
-        <TextView
-            android:id="@+id/tvFirstName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvName"
-            android:layout_marginBottom="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/mdUserFirstName" />
-    </RelativeLayout>
-
     <ListView
         android:id="@+id/lsvMenu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/btnLoginMenu"
-        android:layout_below="@+id/UserInfos"></ListView>
+        android:layout_alignParentTop="true"></ListView>
 
     <Button
         android:id="@+id/btnLoginMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="@string/btnLogout"
+        android:text="@string/btnLogin"
         android:textAllCaps="false" />
+
 </RelativeLayout>
