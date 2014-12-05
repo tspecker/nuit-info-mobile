@@ -18,6 +18,11 @@ import android.support.v4.widget.DrawerLayout;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import static com.nuitinfo.Util.Constants.NEWS;
+import static com.nuitinfo.Util.Constants.PLACES;
+
+import com.nuitinfo.Util.Constants;
+
 
 public class MainActivity extends Activity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -50,12 +55,15 @@ public class MainActivity extends Activity
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
-                .commit();
 
-        switch (position){
+
+        switch (position) {
+            case NEWS:
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, HomeFragment.newInstance(position + 1))
+                        .commit();
+                break;
 
         }
     }

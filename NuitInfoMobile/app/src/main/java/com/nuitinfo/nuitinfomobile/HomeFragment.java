@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class HomeFragment extends Fragment {
     private static final String TAG = "HomeFragment";
-
+    private static final String ARG_SECTION_NUMBER = "section_number";
     ListView lvNews = null ;
 
 
@@ -39,6 +39,13 @@ public class HomeFragment extends Fragment {
         return rootView;
     }
 
+    public static HomeFragment newInstance(int sectionNumber) {
+        HomeFragment fragment = new HomeFragment();
+        Bundle args = new Bundle();
+        args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+        fragment.setArguments(args);
+        return fragment;
+    }
 
 
 

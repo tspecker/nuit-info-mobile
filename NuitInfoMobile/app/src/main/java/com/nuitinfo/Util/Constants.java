@@ -7,4 +7,8 @@ public class Constants {
 
     public final static String GLOBAL_URL =" " ;
 
+    public final static int NEWS = 1 ;
+    public final static int PLACES = 2 ;
+
+
 }
