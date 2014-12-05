@@ -11,8 +11,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.nuitinfo.AppController;
 import com.nuitinfo.model.MyError;
 import com.nuitinfo.model.ParamRequests;
+import com.nuitinfo.model.interfaces.IMyError;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -22,8 +22,8 @@ import java.util.Map;
  */
 public class VolleyUtility {
 
-    public Error Post_Request(String url ,final ParamRequests paramObj final Object responseObj) {
 
+    public static void connexion(String url, final ParamRequests paramObj, final IMyError callback) {
         String language = Locale.getDefault().getLanguage();
         String tag_json_obj = "json_obj_req";
         final String TAG = "Volley";
@@ -34,9 +34,9 @@ public class VolleyUtility {
                     @Override
                     public void onResponse(String response) {
 
-                         MyError result = new MyError(response,false);
-                        responseObj. result ;
-
+                        MyError result = new MyError(response, true);
+                        callback.response(result);
+                        return;
                     }
                 }, new Response.ErrorListener() {
 
@@ -44,10 +44,17 @@ public class VolleyUtility {
             public void onErrorResponse(VolleyError error) {
                 VolleyLog.d(TAG, "MyError: " + error.getMessage());
                 NetworkResponse responseNetwork = error.networkResponse;
-                if (responseNetwork != null) {
 
 
-                }
+                MyError result = new MyError(error.getMessage(), false);
+                callback.responseError(result);
+                return;
+
+                // TODO
+                /*if (responseNetwork != null) {
+
+
+                }*/
 
             }
         }) {
@@ -56,8 +63,8 @@ public class VolleyUtility {
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
 
-                for(ParamRequests.ParamRequest param : paramObj.list){
-                    params.put(param.Key , param.Value);
+                for (ParamRequests.ParamRequest param : paramObj.list) {
+                    params.put(param.Key, param.Value);
                 }
                 return params;
             }
@@ -70,4 +77,6 @@ public class VolleyUtility {
         jsonObjReq.setRetryPolicy(policy);
         AppController.getInstance().addToRequestQueue(jsonObjReq, tag_json_obj);
     }
+
+
 }

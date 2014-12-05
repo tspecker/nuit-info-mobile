@@ -1,22 +1,20 @@
 package com.nuitinfo.nuitinfomobile;
 
-import android.app.Activity;
-
 import android.app.ActionBar;
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.Gravity;
+import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.support.v4.widget.DrawerLayout;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
+
+import com.nuitinfo.model.MyError;
+import com.nuitinfo.model.Users;
+import com.nuitinfo.model.interfaces.IUser;
 
 import static com.nuitinfo.Util.Constants.NEWS;
 import static com.nuitinfo.Util.Constants.PLACES;
@@ -25,7 +23,7 @@ import com.nuitinfo.Util.Constants;
 
 
 public class MainActivity extends Activity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+        implements NavigationDrawerFragment.NavigationDrawerCallbacks, IUser {
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -41,6 +39,10 @@ public class MainActivity extends Activity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
+
+        String email = "specker.thibaut@gmail.com";
+        String pwd = "motdepassealazeub";
+        //Users.User.connexion(email, pwd, this);
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getFragmentManager().findFragmentById(R.id.navigation_drawer);
@@ -119,6 +121,7 @@ public class MainActivity extends Activity
      * A placeholder fragment containing a simple view.
      */
     public static class PlaceholderFragment extends Fragment {
+
         /**
          * The fragment argument representing the section number for this
          * fragment.
@@ -153,6 +156,17 @@ public class MainActivity extends Activity
             ((MainActivity) activity).onSectionAttached(
                     getArguments().getInt(ARG_SECTION_NUMBER));
         }
+
+    }
+
+    @Override
+    public void userResponse(MyError result) {
+
+    }
+
+    @Override
+    public void userResponseError(MyError result) {
+
     }
 
 }
