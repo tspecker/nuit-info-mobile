@@ -12,13 +12,22 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.nuitinfo.model.Base;
+import com.nuitinfo.model.MyError;
 import com.nuitinfo.model.Users;
 import com.nuitinfo.model.interfaces.IUser;
+
+import static com.nuitinfo.Util.Constants.NEWS;
+import static com.nuitinfo.Util.Constants.PLACES;
+
+import com.nuitinfo.Util.Constants;
 
 
 public class MainActivity extends Activity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks, IUser {
+
+
+    MenuDrawerConFragment menuLogin ;
+    MenuDrawerUnconFragment menuUnLogin;
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -37,7 +46,7 @@ public class MainActivity extends Activity
 
         String email = "specker.thibaut@gmail.com";
         String pwd = "motdepassealazeub";
-        Users.User.connexion(email, pwd, this);
+        //Users.User.connexion(email, pwd, this);
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getFragmentManager().findFragmentById(R.id.navigation_drawer);
@@ -52,12 +61,15 @@ public class MainActivity extends Activity
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
-                .commit();
+
 
         switch (position) {
+            case NEWS:
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, HomeFragment.newInstance(position + 1))
+                        .commit();
+                break;
 
         }
     }
@@ -109,55 +121,34 @@ public class MainActivity extends Activity
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
 
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_NUMBER = "section_number";
 
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        public PlaceholderFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.main_fragment, container, false);
-            return rootView;
-        }
-
-        @Override
-        public void onAttach(Activity activity) {
-            super.onAttach(activity);
-            ((MainActivity) activity).onSectionAttached(
-                    getArguments().getInt(ARG_SECTION_NUMBER));
-        }
+    @Override
+    public void userResponse(MyError result) {
 
     }
 
     @Override
-    public void userResponse(Base result) {
+    public void userResponseError(MyError result) {
 
     }
 
-    @Override
-    public void userResponseError(Base result) {
+    public void CreateMenu(){
+
+        // TODO  create method to know if user is connect or no
+        boolean connected = false ;
+
+        menuLogin = new MenuDrawerConFragment();
+        menuUnLogin = new MenuDrawerUnconFragment();
+
+
+        if (connected) {
+
+
+        }else{
+
+
+        }
 
     }
 
