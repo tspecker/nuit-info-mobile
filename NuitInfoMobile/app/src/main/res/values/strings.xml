@@ -11,6 +11,11 @@
     <string name="action_settings">Settings</string>
 
 
+    <string name="news_section">Actualitées</string>
+    <string name="places_section">Lieux</string>
+
+
+
     <string name="btnLogout">Logout</string>
     <string name="btnLogin">Login</string>
     <string name="hEmail">Email</string>
