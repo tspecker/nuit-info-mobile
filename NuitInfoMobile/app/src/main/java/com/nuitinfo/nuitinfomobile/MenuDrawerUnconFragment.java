@@ -9,6 +9,8 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.nuitinfo.nuitinfomobile.menu.MenuCustomAdapter;
+
 /**
  * Created by tiby on 05/12/2014.
  */
@@ -40,9 +42,12 @@ public class MenuDrawerUnconFragment extends Fragment {
         menuitem.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+                selectItem(position);
             }
         });
+
+        menuitem.setAdapter(new MenuCustomAdapter(getActivity().getApplicationContext(),
+                new MenuI));
 
 
         return rootView;
